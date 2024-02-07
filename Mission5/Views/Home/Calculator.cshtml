@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Calculator";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Package Calculations - Become an FC24 Champion</title>
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+</head>
+<body>
+    <h1>Cost Calculations for Surf Lessons</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="hours">Hours Needed:</label>
+                        <input type="number" class="form-control" id="hours" placeholder="Enter hours" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Hourly Rate ($):</label>
+                        <input type="text" class="form-control" id="rate" value="75" readonly>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="calculate">Calculate Total</button>
+                </form>
+                <br />
+            </div>
+            <div class="col-md-6">
+                <label for="total">Total Charge ($):</label>
+                <input type="text" class="form-control" id="total" readonly>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <br />
+    <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </nav>
+    <footer>
+        <p>&copy; 2024 Surfing World. Built with passion by Braxdon Simmons. All rights reserved. </p>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            $('#calculate').click(function() {
+                var hours = $('#hours').val();
+                var rate = $('#rate').val();
+                if (hours > 0) {
+                    var total = hours * rate;
+                    $('#total').val(total.toFixed(2));
+                } else {
+                    alert('Please enter a positive number of hours.');
+                }
+            });
+        });
+    </script>
+
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
